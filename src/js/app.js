@@ -12,4 +12,9 @@ var Jokes = Backbone.Model.extend({
 //actionsCollection instances
 
 var filteredJokes = new Jokes();
-filteredJokes.fetch();
+filteredJokes.fetch().then(function(response){
+    var item = response.get('type')
+    _.filter(response, function(item){
+        return item === "knock-knock";
+    });
+});
